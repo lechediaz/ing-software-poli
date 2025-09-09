@@ -1,6 +1,9 @@
 ; Participantes:
 ;  - Oscar David Diaz
 ;  - Daniel Ortiz Correa
+;  - Joshua Jarid Orbes
+;  - Roy Jahns Manotas
+;  - Mateo Rojas Trujillo
 .model small
 .stack 100h
 
