@@ -5,7 +5,6 @@ window.addEventListener('load', () => {
 
     // Pide la cantidad de números a analizar al usuario.
     const cantidad = pedirCantidad();
-    menor = cantidad;
 
     // Poner la cantidad en la paǵina.
     document.getElementById('cantidadNumeros').textContent = cantidad;
@@ -19,11 +18,17 @@ window.addEventListener('load', () => {
         pNumero.textContent = numero;
         document.getElementById('numerIngresados').appendChild(pNumero);
 
-        // Si el número ingresado es mayor al actual, se guarda como el mayor.
-        if (numero > mayor) mayor = numero;
+        // El primer número ingresado es el mayor y menor.
+        if (contador === 0) {
+            mayor = numero;
+            menor = numero;
+        } else {
+            // Si el número ingresado es mayor al actual, se guarda como el mayor.
+            if (numero > mayor) mayor = numero;
 
-        // Si el número ingresado es menor al actual, se guarda como el mayor.
-        if (numero < menor) menor = numero;
+            // Si el número ingresado es menor al actual, se guarda como el mayor.
+            if (numero < menor) menor = numero;
+        }
 
         contador++;
     }
@@ -34,10 +39,10 @@ window.addEventListener('load', () => {
 })
 
 const pedirCantidad = (invalido = false) => {
-    // Aunque no estamos limitados a 1 caracter, se conserva el límite para tener el mismo comportamiento que hicimos en Assembly.
+    // Aquí no estamos limitados a 1 caracter como en la versión de Assembly, pero se va a validar que sea un número.
     const textoSolicitaCantidad = !invalido ?
-        'Ingrese cantidad de numeros a comparar (1-9):'
-        : 'Por favor, ingrese la cantidad de numeros a comparar según lo indicado (1-9):';
+        'Ingrese cantidad de numeros a comparar:'
+        : 'Por favor, ingrese una cantidad válida de numeros a comparar:';
 
     const cantidadString = window.prompt(textoSolicitaCantidad);
     const cantidadNumber = Number(cantidadString)
@@ -45,13 +50,12 @@ const pedirCantidad = (invalido = false) => {
     /* Vuelve a solicitar la cantidad al usuario si:
      * - La cantidad ingresada no es un número válido.
      * - La cantidad ingresada es menor a 0.
-     * - La cantidad ingresada es mayor a 9.
      */
-    return !Number.isNaN(cantidadNumber) && cantidadNumber > 0 && cantidadNumber < 10 ? cantidadNumber : pedirCantidad(true)
+    return !Number.isNaN(cantidadNumber) && cantidadNumber > 0 ? cantidadNumber : pedirCantidad(true)
 }
 
 const pedirNumero = (invalido = false) => {
-    const textoSolicitaNumero = !invalido ? 'Ingrese un numero:' : 'Ingrese un número válido:';
+    const textoSolicitaNumero = !invalido ? 'Ingrese un numero:' : 'Por favor, ingrese un número válido:';
     const numeroString = window.prompt(textoSolicitaNumero);
     const numeroNumber = Number(numeroString)
 
