@@ -55,13 +55,18 @@ function cancelTask(taskName) {
 function completeTask(taskName) {
   if (typeof taskName === "string") {
     cancelTask(taskName);
-    const newCompletedTasks = getCompletedTasks()
-    
+    const newCompletedTasks = getCompletedTasks();
+
     newCompletedTasks.unshift(taskName);
 
     setCompletedTasks(newCompletedTasks);
     refreshCompletedTasks();
   }
+}
+
+function deleteCompleted() {
+  setCompletedTasks([]);
+  refreshCompletedTasks();
 }
 
 function refreshCompletedTasks() {
