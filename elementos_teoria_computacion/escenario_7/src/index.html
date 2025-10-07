@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Lista de tareas</title>
+</head>
+
+<body>
+    <section class="container">
+        <h1>Lista de tareas</h1>
+        <section id="new-task">
+            <h2>Nueva tarea</h2>
+            <input type="text" name="taskName" id="newTaskName" placeholder="Nombre de la nueva tarea">
+            <button onclick="addTask()">Agregar</button>
+        </section>
+        <section id="to-do">
+            <h2 class="title">Por hacer</h2>
+            <section class="task-list"></section>
+        </section>
+        <section id="completed">
+            <h2 class="title">Completadas</h2>
+            <section class="task-list"></section>
+        </section>
+    </section>
+    <script src="index.js"></script>
+</body>
+
+</html>
